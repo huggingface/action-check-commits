@@ -1,0 +1,22 @@
+name: "Check Commits"
+description: "Enforce some checks on the list of commits."
+inputs:
+  GITHUB_TOKEN:
+    description: 'GitHub token'
+    required: false
+  max-commits:
+    description: 'Specify the maximum number of commits'
+    default: '10'
+    required: false
+  min-words:
+    description: 'Specify the minimum number of words for each commit'
+    default: '3'
+    required: false
+  forbidden-words:
+    description: 'Specify a comma separated list of forbidden words'
+    default: 'fixup'
+    required: false
+
+runs:
+  using: node20
+  main: dist/main/index.js
