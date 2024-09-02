@@ -17,7 +17,7 @@ async function run() {
 
     const maxCommits = parseInt(core.getInput("max-commits"))
     if (extractedCommits.length > maxCommits) {
-        core.setFailed(`🚫 The pull-request shall not contain more than ${maxCommits} commits: please consider squashing some of them`);
+        core.setFailed(`🚫 The pull-request shall not contain more than ${maxCommits} commits: please squash some of them or split the pull-request.`);
         return;
     }
 
@@ -37,7 +37,7 @@ async function run() {
 
     if (hasErrors) {
         core.setFailed(
-            `🚫 Some of the commit messages are not valid.`
+            `🚫 Some of the commit messages are either too short of contain forbidden words. Please amend or squash them.`
         );
     } else {
         core.info("🎉 All commit messages are valid.");
